@@ -31,6 +31,18 @@ view: products {
     type: number
     sql: ${TABLE}.retail_price ;;
   }
+
+  measure: test {
+    type: number
+    sql: (${retail_price}- ${rank})*1000 ;;
+    html: {% if value < 0 %}
+          <div>
+          {{rendered_value| replace: '-', '△ '}}</div>
+          {% else %}
+          {{rendered_value}}
+          {% endif %}
+      ;;
+      }
   dimension: sku {
     type: string
     sql: ${TABLE}.sku ;;
