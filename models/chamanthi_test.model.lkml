@@ -194,7 +194,7 @@ explore: salary {
   }
 }
 
-explore: sample_data {}
+# explore: sample_data {}
 
 explore: sample_table {}
 

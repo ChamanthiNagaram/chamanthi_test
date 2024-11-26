@@ -11,10 +11,21 @@ view: users {
     type: number
     sql: ${TABLE}.age ;;
   }
+  #
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+    label: "City"
+  #   link: {
+  #     label: "Go to {{value}) dashboard"
+  #     # url:" /dashboards-next/179?Date=14+day&Game=&+++Media+Source={{value | replace: ' ','+' }}"
+  # }
+   html: <img src="https://bi-public-assets.s3.eu-central-1.amazonaws.com/af_partners/{{value}}.png" style="height: 15px" /> {{ rendered_value }};;
+    drill_fields: [state,count]
   }
+
+
   dimension: country {
     type: string
     map_layer_name: countries
@@ -57,15 +68,15 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }
