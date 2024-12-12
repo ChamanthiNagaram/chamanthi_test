@@ -56,6 +56,7 @@ view: products {
   dimension: retail_price {
     type: number
     sql: ${TABLE}.retail_price ;;
+    drill_fields: [id,rank]
   }
   dimension: sku {
     type: string
