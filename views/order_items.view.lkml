@@ -2,6 +2,27 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+  parameter: test_cross_filter{
+    type: unquoted
+    label: "Testing the cross filtering using label_from_parameter"
+    allowed_value: {
+      label: "order_name"
+      value: "id"
+    }
+    allowed_value: {
+      label: "order_group"
+      value: "order_id"
+    }
+
+  }
+
+  dimension: dynamic_grouping {
+    type: string
+    sql: ${TABLE}.{% parameter test_cross_filter %} ;;
+    label_from_parameter: test_cross_filter
+    #value_format_name: "usd"
+  }
+
   dimension: id {
     primary_key: yes
     type: number
