@@ -123,6 +123,7 @@ explore: orders {
 }
 
 explore: order_items {
+  fields: [orders.detail*]
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
